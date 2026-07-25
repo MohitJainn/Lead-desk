@@ -10,13 +10,13 @@ app.use(express.json())
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY // service role key, backend-only, never expose to frontend
+  process.env.SUPABASE_SERVICE_ROLE_KEY 
 )
 
 app.post('/api/leads', async (req, res) => {
   const { name, email, budget_range, message } = req.body
 
-  // Server-side validation
+ 
   if (!name || typeof name !== 'string' || !name.trim()) {
     return res.status(400).json({ error: 'Name is required' })
   }
